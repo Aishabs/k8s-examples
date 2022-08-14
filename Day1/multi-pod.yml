@@ -4,7 +4,7 @@ metadata:
   name: multi-pod
 labels:
     app: mymultiPod
-    type: network
+    type: frontend
 spec:
   containers:
   - name: nginx:alpine
@@ -12,6 +12,6 @@ spec:
 
   - name: redis
     image: redis
-    
+
   - name: memcached
     image: memcached
