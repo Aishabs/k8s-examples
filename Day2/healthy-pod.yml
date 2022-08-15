@@ -9,19 +9,23 @@ spec:
     - name: nginx
       image: nginx
       livenessProbe:
-        exec:
-          command:
-          - cat
-          - /tmp/healthy
+        httpGet:
+        path: /healthz
+        port: 8080
+        httpHeaders:
+        - name: Custom-Header
+          value: Awesome
         initialDelaySeconds: 5
         timeoutSeconds: 1
         periodSeconds: 3
         failureThreshold: 5
       readinessProbe:
-        exec:
-          command:
-          - cat
-          - /tmp/healthy
+        httpGet:
+         path: /healthz
+         port: 8080
+        httpHeaders:
+        - name: Custom-Header
+          value: Awesome
         initialDelaySeconds: 5
         timeoutSeconds: 1
         periodSeconds: 3
